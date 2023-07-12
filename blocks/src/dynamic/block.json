@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "wz-tutorial/dynamic-block",
+	"name": "blackbird/dynamic-block",
 	"version": "0.1.0",
 	"title": "Example Dynamic Block",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "flag",
 	"description": "Example Dynamic Block",
 	"supports": {
 		"html": false
@@ -31,7 +31,7 @@
 		}
 	},
 	"example": {},
-	"textdomain": "dynamic-block",
+	"textdomain": "blackbird",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

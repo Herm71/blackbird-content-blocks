@@ -18,7 +18,7 @@ import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps( {
-		className: 'wz-dynamic-block',
+		className: 'bb-dynamic-block',
 	} );
 
 	const { postsToShow, showHeading, heading, order, orderBy } = attributes;
@@ -35,7 +35,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Settings', 'dynamic-block' ) }
+					title={ __( 'Settings', 'blackbird' ) }
 					initialOpen={ true }
 				>
 					<PanelRow>
@@ -43,17 +43,17 @@ export default function Edit( { attributes, setAttributes } ) {
 							<ToggleControl
 								label={ __(
 									'Show a heading before',
-									'dynamic-block'
+									'blackbird'
 								) }
 								help={
 									showHeading
 										? __(
 												'Heading displayed',
-												'dynamic-block'
+												'blackbird'
 										  )
 										: __(
 												'No Heading displayed',
-												'dynamic-block'
+												'blackbird'
 										  )
 								}
 								checked={ showHeading }
@@ -65,12 +65,12 @@ export default function Edit( { attributes, setAttributes } ) {
 						<PanelRow>
 							<fieldset>
 								<TextControl
-									label={ __( 'Heading', 'dynamic-block' ) }
+									label={ __( 'Heading', 'blackbird' ) }
 									value={ heading }
 									onChange={ onChangeHeading }
 									help={ __(
 										'Text to display above the alert box',
-										'dynamic-block'
+										'blackbird'
 									) }
 								/>
 							</fieldset>
