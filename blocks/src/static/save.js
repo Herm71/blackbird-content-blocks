@@ -4,7 +4,7 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
 	const blockProps = useBlockProps.save( {
-		className: 'wzkb-alert',
+		className: 'bb-alert',
 	} );
 	const { content, align, showHeading, heading, iconName } = attributes;
 	const className = blockProps.className;
