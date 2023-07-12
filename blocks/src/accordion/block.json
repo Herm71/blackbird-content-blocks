@@ -6,19 +6,34 @@
 	"title": "Accordion Block",
 	"category": "common",
 	"icon": "menu",
-	"description": "Accordion Block",
+	"description": "Accordion Block for doing stuff",
 	"supports": {
 		"html": false
 	},
 	"attributes": {
 			"openOnPageLoad": {
-				"type": "boolean",
+				"type": "boolean"
 		},
 			"title": {
 				"type": "string"
+		},
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"alignment": {
+			"type": "string",
+			"default": "none"
 		}
 	},
-	"example": {},
+	"example": {
+		"attributes": {
+			"content": "Hello World",
+			"alignment": "right",
+			"title": "My title"
+		}
+	},
 	"textdomain": "accordion-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

@@ -5,11 +5,9 @@ import ServerSideRender from '@wordpress/server-side-render';
 import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 
 import {
-	Disabled,
-	TextControl,
-	ToggleControl,
-	PanelBody,
+	Panel,
 	PanelRow,
+	PanelBody,
 	CheckboxControl,
 } from '@wordpress/components';
 
@@ -22,18 +20,24 @@ export default function Edit( { attributes, setAttributes } ) {
 	} );
 
 	return (
-		<>
+		<div { ...blockProps }>
 			<InspectorControls key="setting">
 				<Panel>
-					<PanelBody>
-						<CheckboxControl
-							label="Open on page load"
-							checked={attributes.openOnPageLoad}
-							onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
-						></CheckboxControl>
-					</PanelBody>
+					<PanelRow>
+						<PanelBody>
+							<CheckboxControl
+								label="Open on page load"
+								checked={attributes.openOnPageLoad}
+								onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
+							></CheckboxControl>
+						</PanelBody>
+					</PanelRow>
+					
 				</Panel>
 			</InspectorControls>
+			<BlockControls group="block">
+				<AlignmentControl value={align} onChange={onChangeAlign} />
+			</BlockControls>
 			<details className='ucsc-accordion' open="true" >
 				<summary><input
 					placeholder='Accordion Item Title'
@@ -45,6 +49,6 @@ export default function Edit( { attributes, setAttributes } ) {
 					style={{ "width": "100%" }} /></summary>
 				<InnerBlocks />
 			</details>
-		</>
+		</div>
 	);
 }
