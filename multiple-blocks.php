@@ -105,7 +105,7 @@ function bb_tutorial_dynamic_block_recent_posts( $attributes ) {
  *
  * @return string Returns the post content with latest posts added.
  */
-function theHTML($attributes, $content)
+function bb_accordion_block($attributes, $content)
   {
     $open = ($attributes['openOnPageLoad'] === true) ? 'open' : '';
     return '<details class="' . $attributes['className']  . '"' . $open . '>
