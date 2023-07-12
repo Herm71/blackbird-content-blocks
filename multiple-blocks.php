@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name:       Multiple blocks plugin
- * Plugin URI:        https://webberzone.com/blog/gutenberg-block-development-tutorial/
+ * Plugin URI:        https://github.com/Herm71/multiple-blocks
  * Description:       Example plugin to demonstrate how to create multiple blocks.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
- * Author:            WebberZone
+ * Author:            @Herm71
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       multiple-blocks
@@ -22,11 +22,11 @@
  *
  * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/writing-your-first-block-type/
  */
-function wz_multiple_blocks_register_blocks() {
+function bb_multiple_blocks_register_blocks() {
 
 	// Register blocks in the format $dir => $render_callback.
 	$blocks = array(
-		'dynamic' => 'wz_tutorial_dynamic_block_recent_posts', // Dynamic block with a callback.
+		'dynamic' => 'bb_tutorial_dynamic_block_recent_posts', // Dynamic block with a callback.
 		'static'  => '', // Static block. Doesn't need a callback.
 	);
 
@@ -38,7 +38,7 @@ function wz_multiple_blocks_register_blocks() {
 		register_block_type( __DIR__ . '/blocks/build/' . $dir, $args );
 	}
 }
-add_action( 'init', 'wz_multiple_blocks_register_blocks' );
+add_action( 'init', 'bb_multiple_blocks_register_blocks' );
 
 /**
  * Renders the dynamic block on server.
@@ -47,7 +47,7 @@ add_action( 'init', 'wz_multiple_blocks_register_blocks' );
  *
  * @return string Returns the post content with latest posts added.
  */
-function wz_tutorial_dynamic_block_recent_posts( $attributes ) {
+function bb_tutorial_dynamic_block_recent_posts( $attributes ) {
 
 	$args = array(
 		'posts_per_page'      => $attributes['postsToShow'],
