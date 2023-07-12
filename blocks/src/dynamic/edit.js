@@ -35,7 +35,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Settings', 'blackbird' ) }
+					title={ __( 'Settings', 'dynamic-block' ) }
 					initialOpen={ true }
 				>
 					<PanelRow>
@@ -43,17 +43,17 @@ export default function Edit( { attributes, setAttributes } ) {
 							<ToggleControl
 								label={ __(
 									'Show a heading before',
-									'blackbird'
+									'dynamic-block'
 								) }
 								help={
 									showHeading
 										? __(
 												'Heading displayed',
-												'blackbird'
+												'dynamic-block'
 										  )
 										: __(
 												'No Heading displayed',
-												'blackbird'
+												'dynamic-block'
 										  )
 								}
 								checked={ showHeading }
@@ -65,12 +65,12 @@ export default function Edit( { attributes, setAttributes } ) {
 						<PanelRow>
 							<fieldset>
 								<TextControl
-									label={ __( 'Heading', 'blackbird' ) }
+									label={ __( 'Heading', 'dynamic-block' ) }
 									value={ heading }
 									onChange={ onChangeHeading }
 									help={ __(
 										'Text to display above the alert box',
-										'blackbird'
+										'dynamic-block'
 									) }
 								/>
 							</fieldset>
