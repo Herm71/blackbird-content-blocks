@@ -4,6 +4,18 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-blackbird-accordion-block {
-	border: 1px dotted #f00;
+.ucsc-accordion {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin: .5em .5em 0;
+  padding: .5em .5em 0;
+}
+
+.ucsc-accordion[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: .5em;
+}
+
+.ucsc-accordion summary input {
+  border: 0;
 }

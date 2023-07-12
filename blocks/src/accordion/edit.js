@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
 
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 
 import {
 	Disabled,
@@ -10,7 +10,7 @@ import {
 	ToggleControl,
 	PanelBody,
 	PanelRow,
-	QueryControls,
+	CheckboxControl,
 } from '@wordpress/components';
 
 import metadata from './block.json';
@@ -18,89 +18,33 @@ import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps( {
-		className: 'bb-dynamic-block',
+		className: 'bb-accordion-block',
 	} );
-
-	const { postsToShow, showHeading, heading, order, orderBy } = attributes;
-
-	const onChangeHeading = ( newHeading ) => {
-		setAttributes( { heading: newHeading } );
-	};
-
-	const toggleHeading = () => {
-		setAttributes( { showHeading: ! showHeading } );
-	};
 
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody
-					title={ __( 'Settings', 'accordion-block' ) }
-					initialOpen={ true }
-				>
-					<PanelRow>
-						<fieldset>
-							<ToggleControl
-								label={ __(
-									'Show a heading before',
-									'accordion-block'
-								) }
-								help={
-									showHeading
-										? __(
-												'Heading displayed',
-												'accordion-block'
-										  )
-										: __(
-												'No Heading displayed',
-												'accordion-block'
-										  )
-								}
-								checked={ showHeading }
-								onChange={ toggleHeading }
-							/>
-						</fieldset>
-					</PanelRow>
-					{ showHeading && (
-						<PanelRow>
-							<fieldset>
-								<TextControl
-									label={ __( 'Heading', 'accordion-block' ) }
-									value={ heading }
-									onChange={ onChangeHeading }
-									help={ __(
-										'Text to display above the alert box',
-										'accordion-block'
-									) }
-								/>
-							</fieldset>
-						</PanelRow>
-					) }
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
-						onOrderChange={ ( value ) =>
-							setAttributes( { order: value } )
-						}
-						onOrderByChange={ ( value ) =>
-							setAttributes( { orderBy: value } )
-						}
-						onNumberOfItemsChange={ ( value ) =>
-							setAttributes( { postsToShow: value } )
-						}
-					/>
-				</PanelBody>
+			<InspectorControls key="setting">
+				<Panel>
+					<PanelBody>
+						<CheckboxControl
+							label="Open on page load"
+							checked={attributes.openOnPageLoad}
+							onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
+						></CheckboxControl>
+					</PanelBody>
+				</Panel>
 			</InspectorControls>
-
-			<div { ...blockProps }>
-				<Disabled>
-					<ServerSideRender
-						block={ metadata.name }
-						skipBlockSupportAttributes
-						attributes={ attributes }
-					/>
-				</Disabled>
-			</div>
+			<details className='ucsc-accordion' open="true" >
+				<summary><input
+					placeholder='Accordion Item Title'
+					value={attributes.title}
+					onKeyUp={event => {
+						event.preventDefault();
+					}}
+					onChange={e => setAttributes({ title: e.target.value })}
+					style={{ "width": "100%" }} /></summary>
+				<InnerBlocks />
+			</details>
 		</>
 	);
 }

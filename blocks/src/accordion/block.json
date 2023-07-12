@@ -4,30 +4,18 @@
 	"name": "blackbird/accordion-block",
 	"version": "0.1.0",
 	"title": "Accordion Block",
-	"category": "widgets",
-	"icon": "flag",
-	"description": "Example Accordion Block",
+	"category": "common",
+	"icon": "menu",
+	"description": "Accordion Block",
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-		"postsToShow": {
-			"type": "number",
-			"default": 5
+			"openOnPageLoad": {
+				"type": "boolean",
 		},
-		"heading": {
-			"type": "string"
-		},
-		"showHeading": {
-			"type": "boolean"
-		},
-		"order": {
-			"type": "string",
-			"default": "desc"
-		},
-		"orderBy": {
-			"type": "string",
-			"default": "date"
+			"title": {
+				"type": "string"
 		}
 	},
 	"example": {},
