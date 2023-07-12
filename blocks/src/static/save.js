@@ -13,7 +13,7 @@ export default function save( { attributes } ) {
 		<>
 			<div { ...blockProps } className={ className }>
 				{ showHeading && (
-					<div className="wz-alert-heading">
+					<div className="bb-alert-heading">
 						{ iconName !== 'none' && (
 							<span
 								className={ classnames( 'dashicons', {
@@ -30,7 +30,7 @@ export default function save( { attributes } ) {
 					tagName="div"
 					value={ content }
 					style={ { textAlign: align } }
-					className="wz-alert-text"
+					className="bb-alert-text"
 				/>
 			</div>
 		</>

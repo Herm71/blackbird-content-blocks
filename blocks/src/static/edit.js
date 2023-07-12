@@ -24,7 +24,7 @@ import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps( {
-		className: 'wz-alert',
+		className: 'bb-alert',
 	} );
 	const { content, align, showHeading, heading, iconName } = attributes;
 
@@ -152,7 +152,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 			<div { ...blockProps }>
 				{ showHeading && (
-					<div className="wz-alert-heading">
+					<div className="bb-alert-heading">
 						{ iconName !== 'none' && (
 							<span
 								className={ classnames( 'dashicons', {
@@ -174,7 +174,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						'basic-block'
 					) }
 					style={ { textAlign: align } }
-					className="wz-alert-text"
+					className="bb-alert-text"
 				/>
 			</div>
 		</>
