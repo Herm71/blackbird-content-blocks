@@ -28,6 +28,7 @@ function bb_multiple_blocks_register_blocks() {
 	$blocks = array(
 		'dynamic' => 'bb_tutorial_dynamic_block_recent_posts', // Dynamic block with a callback.
 		'static'  => '', // Static block. Doesn't need a callback.
+		'accordion' => '', // Dynamic block with a callback.
 	);
 
 	foreach ( $blocks as $dir => $render_callback ) {
@@ -96,3 +97,19 @@ function bb_tutorial_dynamic_block_recent_posts( $attributes ) {
 		$li_html
 	);
 }
+
+/**
+ * Renders the Accordion block on server.
+ *
+ * @param array $attributes The block attributes.
+ *
+ * @return string Returns the post content with latest posts added.
+ */
+function bb_accordion_block($attributes, $content)
+  {
+    $open = ($attributes['openOnPageLoad'] === true) ? 'open' : '';
+    return '<details class="' . $attributes['className']  . '"' . $open . '>
+              <summary>' . $attributes['title'] . '</summary>'
+              . $content .
+           '</details>';
+  }

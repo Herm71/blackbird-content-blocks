@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "blackbird/accordion-block",
+	"version": "0.1.0",
+	"title": "Accordion Block",
+	"category": "common",
+	"icon": "menu",
+	"description": "Accordion Block for doing stuff",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+			"openOnPageLoad": {
+				"type": "boolean"
+		},
+			"title": {
+				"type": "string"
+		}
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		}
+	],
+	"example": {
+		"attributes": {
+			"content": "Hello World",
+			"align": "right",
+			"title": "My title"
+		}
+	},
+	"textdomain": "accordion-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

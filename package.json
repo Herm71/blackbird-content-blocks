@@ -13,6 +13,8 @@
 		"build:static": "wp-scripts build --webpack-src-dir=blocks/src/static --output-path=blocks/build/static",
 		"start:dynamic": "wp-scripts start --webpack-src-dir=blocks/src/dynamic --output-path=blocks/build/dynamic",
 		"build:dynamic": "wp-scripts build --webpack-src-dir=blocks/src/dynamic --output-path=blocks/build/dynamic",
+		"start:accordion": "wp-scripts start --webpack-src-dir=blocks/src/accordion --output-path=blocks/build/accordion",
+		"build:accordion": "wp-scripts build --webpack-src-dir=blocks/src/accordion --output-path=blocks/build/accordion",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
