@@ -17,7 +17,6 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 
-import { useEffect, useRef } from '@wordpress/element';
 import { SPACE } from '@wordpress/keycodes';
 
 import './editor.scss';
@@ -32,28 +31,14 @@ export default function DetailsEdit( {
 	const blockProps = useBlockProps( {
 		className: 'bb-accordion-block',
 	} );
-	const summaryRef = useRef(null);
 	const keyUpListener = (e) => {
 		if (e.keyCode === SPACE) {
 			e.preventDefault();
 		}
 	};
 
-	const clickListener = (e) => e.preventDefault();
+	// const clickListener = (e) => e.preventDefault();
 	
-
-	useEffect(() => {
-		if (!summaryRef.current) {
-			return;
-		}
-
-		summaryRef.current.addEventListener('keyup', keyUpListener);
-		summaryRef.current.addEventListener('click', clickListener);
-		return () => {
-			summaryRef.current.removeEventListener('keyup', keyUpListener);
-			summaryRef.current.removeEventListener('click', clickListener);
-		};
-	}, [summaryRef.current]);
 
 	const isInnerBlockSelected = useSelect(
 		(select) =>
@@ -103,7 +88,6 @@ export default function DetailsEdit( {
 					value={title}
 					onKeyUp={keyUpListener}
 					onChange={onChangeTitle}
-					ref={summaryRef}
 					placeholder={__(
 						'Enter the summary text...',
 						'accordion-block'

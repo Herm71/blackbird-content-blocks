@@ -12,13 +12,19 @@
 	},
 	"attributes": {
 			"openOnPageLoad": {
-				"type": "boolean",
-				"default": "false"
+				"type": "boolean"
 		},
 			"title": {
 				"type": "string"
 		}
 	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		}
+	],
 	"example": {
 		"attributes": {
 			"content": "Hello World",
