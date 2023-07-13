@@ -12,31 +12,22 @@
 	},
 	"attributes": {
 			"openOnPageLoad": {
-				"type": "boolean"
+				"type": "boolean",
+				"default": "false"
 		},
 			"title": {
 				"type": "string"
-		},
-		"content": {
-			"type": "string",
-			"source": "html",
-			"selector": "p"
-		},
-		"alignment": {
-			"type": "string",
-			"default": "none"
 		}
 	},
 	"example": {
 		"attributes": {
 			"content": "Hello World",
-			"alignment": "right",
+			"align": "right",
 			"title": "My title"
 		}
 	},
 	"textdomain": "accordion-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"render": "file:./render.php"
+	"style": "file:./style-index.css"
 }

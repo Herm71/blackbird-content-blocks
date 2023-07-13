@@ -1,26 +1,79 @@
 import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
 
-import ServerSideRender from '@wordpress/server-side-render';
-
-import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { 
+	useBlockProps, 
+	InspectorControls, 
+	InnerBlocks, 
+	RichText,
+	BlockControls
+} from '@wordpress/block-editor';
 
 import {
 	Panel,
 	PanelRow,
 	PanelBody,
 	CheckboxControl,
+	ToggleControl,
 } from '@wordpress/components';
 
-import metadata from './block.json';
+import { useEffect, useRef } from '@wordpress/element';
+import { SPACE } from '@wordpress/keycodes';
+
 import './editor.scss';
 
-export default function Edit( { attributes, setAttributes } ) {
+export default function DetailsEdit( { 
+	attributes, 
+	setAttributes,
+	className,
+	clientId,
+	isSelected
+ } ) {
 	const blockProps = useBlockProps( {
 		className: 'bb-accordion-block',
 	} );
+	const summaryRef = useRef(null);
+	const keyUpListener = (e) => {
+		if (e.keyCode === SPACE) {
+			e.preventDefault();
+		}
+	};
+
+	const clickListener = (e) => e.preventDefault();
+	
+
+	useEffect(() => {
+		if (!summaryRef.current) {
+			return;
+		}
+
+		summaryRef.current.addEventListener('keyup', keyUpListener);
+		summaryRef.current.addEventListener('click', clickListener);
+		return () => {
+			summaryRef.current.removeEventListener('keyup', keyUpListener);
+			summaryRef.current.removeEventListener('click', clickListener);
+		};
+	}, [summaryRef.current]);
+
+	const isInnerBlockSelected = useSelect(
+		(select) =>
+			select('core/block-editor').hasSelectedInnerBlock(clientId),
+		[clientId]
+	);
+
+	const showInnerBlocks =
+		attributes.initialOpen || isSelected || isInnerBlockSelected;
+
+	const { title } = attributes;
+
+	const onChangeTitle = (newTitle) => {
+		setAttributes({ title: newTitle });
+	};
+
+	const onChangePageLoad = (newValue => setAttributes({openOnPageLoad: newValue}));
 
 	return (
-		<div { ...blockProps }>
+		<>
 			<InspectorControls key="setting">
 				<Panel>
 					<PanelRow>
@@ -28,27 +81,38 @@ export default function Edit( { attributes, setAttributes } ) {
 							<CheckboxControl
 								label="Open on page load"
 								checked={attributes.openOnPageLoad}
-								onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
+								onChange={onChangePageLoad}
 							></CheckboxControl>
 						</PanelBody>
 					</PanelRow>
-					
+					<PanelRow>
+						<ToggleControl
+							label={__('Open by default')}
+							onChange={(openOnPageLoad) =>
+								setAttributes({ openOnPageLoad })
+							}
+							checked={attributes.openOnPageLoad}
+						/>
+					</PanelRow>
 				</Panel>
 			</InspectorControls>
-			<BlockControls group="block">
-				<AlignmentControl value={align} onChange={onChangeAlign} />
-			</BlockControls>
-			<details className='ucsc-accordion' open="true" >
-				<summary><input
-					placeholder='Accordion Item Title'
-					value={attributes.title}
-					onKeyUp={event => {
-						event.preventDefault();
-					}}
-					onChange={e => setAttributes({ title: e.target.value })}
-					style={{ "width": "100%" }} /></summary>
+
+			<details {...blockProps} className={className} open={showInnerBlocks}>
+				<RichText
+					tagName="summary"
+					value={title}
+					onKeyUp={keyUpListener}
+					onChange={onChangeTitle}
+					ref={summaryRef}
+					placeholder={__(
+						'Enter the summary text...',
+						'accordion-block'
+					)}
+					aria-label={__('Summary text')}
+				/>
 				<InnerBlocks />
 			</details>
-		</div>
+
+		</>
 	);
 }

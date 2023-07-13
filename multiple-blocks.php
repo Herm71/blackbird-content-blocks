@@ -28,7 +28,7 @@ function bb_multiple_blocks_register_blocks() {
 	$blocks = array(
 		'dynamic' => 'bb_tutorial_dynamic_block_recent_posts', // Dynamic block with a callback.
 		'static'  => '', // Static block. Doesn't need a callback.
-		'accordion' => 'bb_accordion_block', // Dynamic block with a callback.
+		'accordion' => '', // Dynamic block with a callback.
 	);
 
 	foreach ( $blocks as $dir => $render_callback ) {
