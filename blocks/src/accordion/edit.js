@@ -1,3 +1,4 @@
+
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
@@ -5,22 +6,17 @@ import {
 	useBlockProps, 
 	InspectorControls, 
 	InnerBlocks, 
-	RichText,
-	BlockControls
+	RichText
 } from '@wordpress/block-editor';
 
 import {
 	Panel,
 	PanelRow,
 	PanelBody,
-	CheckboxControl,
-	ToggleControl,
+	CheckboxControl
 } from '@wordpress/components';
-
-import { SPACE } from '@wordpress/keycodes';
-
+// import { SPACE } from '@wordpress/keycodes';
 import './editor.scss';
-
 export default function DetailsEdit( { 
 	attributes, 
 	setAttributes,
@@ -31,8 +27,8 @@ export default function DetailsEdit( {
 	const blockProps = useBlockProps( {
 		className: 'bb-accordion-block',
 	} );
-	const keyUpListener = (e) => {
-		if (e.keyCode === SPACE) {
+	const keyDownListener = (e) => {
+		if (e.keyCode === 32) {
 			e.preventDefault();
 		}
 	};
@@ -55,29 +51,20 @@ export default function DetailsEdit( {
 		setAttributes({ title: newTitle });
 	};
 
-	const onChangePageLoad = (newValue => setAttributes({openOnPageLoad: newValue}));
-
 	return (
 		<>
 			<InspectorControls key="setting">
 				<Panel>
 					<PanelRow>
 						<PanelBody>
-							<CheckboxControl
-								label="Open on page load"
-								checked={attributes.openOnPageLoad}
-								onChange={onChangePageLoad}
-							></CheckboxControl>
+							<fieldset>
+								<CheckboxControl
+									label="Open on page load"
+									checked={attributes.openOnPageLoad}
+									onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
+								></CheckboxControl>
+							</fieldset>
 						</PanelBody>
-					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label={__('Open by default')}
-							onChange={(openOnPageLoad) =>
-								setAttributes({ openOnPageLoad })
-							}
-							checked={attributes.openOnPageLoad}
-						/>
 					</PanelRow>
 				</Panel>
 			</InspectorControls>
@@ -86,8 +73,9 @@ export default function DetailsEdit( {
 				<RichText
 					tagName="summary"
 					value={title}
-					onKeyUp={keyUpListener}
+					onKeyDown={keyDownListener}
 					onChange={onChangeTitle}
+					
 					placeholder={__(
 						'Enter the summary text...',
 						'accordion-block'
