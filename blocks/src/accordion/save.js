@@ -7,7 +7,7 @@ export default function save({ attributes }) {
 	});
 	const innerBlocksProps = useInnerBlocksProps.save();
 	const { title } = attributes;
-	
+
 
 	return (
 		<details {...blockProps}>
@@ -15,7 +15,7 @@ export default function save({ attributes }) {
 					tagName="summary"
 					value={title}
 				/>
-			<InnerBlocks />
 			<div {...innerBlocksProps} />
+		</details>
 	);
 }
