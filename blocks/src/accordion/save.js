@@ -1,13 +1,13 @@
 
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, RichText, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
 	const blockProps = useBlockProps.save({
 	});
-	
+	const innerBlocksProps = useInnerBlocksProps.save();
 	const { title } = attributes;
-
+	
 
 	return (
 		<details {...blockProps}>
@@ -16,6 +16,6 @@ export default function save({ attributes }) {
 					value={title}
 				/>
 			<InnerBlocks />
-		</details>
+			<div {...innerBlocksProps} />
 	);
 }
