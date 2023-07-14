@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "blackbird/accordion-wrapper",
+	"version": "0.1.0",
+	"title": "Accordion Wrapper",
+	"category": "common",
+	"icon": "button",
+	"description": "Wrapper for the Accordion Block",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string"
+		}
+	},
+	"textdomain": "accordion-wrapper",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
