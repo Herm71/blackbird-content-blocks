@@ -10,7 +10,7 @@ export default function save({ attributes }) {
 
 
 	return (
-		<details {...blockProps}>
+		<details {...blockProps} >
 				<RichText.Content
 					tagName="summary"
 					value={title}

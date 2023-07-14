@@ -14,28 +14,48 @@ import {
 	PanelHeader,
 	PanelRow,
 	PanelBody,
-	CheckboxControl
+	CheckboxControl,
+	ToggleControl
 } from '@wordpress/components';
-// import { SPACE } from '@wordpress/keycodes';
+import { useEffect, useRef } from '@wordpress/element';
+import { SPACE } from '@wordpress/keycodes';
 import './editor.scss';
 export default function Edit( { 
 	attributes, 
-	setAttributes,
-	className,
 	clientId,
-	isSelected
+	isSelected,
+	setAttributes,
  } ) {
 	const blockProps = useBlockProps( {
-		className: 'blackbird-accordion-block',
+		className: 'accordion-block',
 	} );
-	const keyDownListener = (e) => {
-		if (e.keyCode === 32) {
+
+	const { title, openOnPageLoad } = attributes;
+	const onChangeTitle = (newTitle) => {
+		setAttributes({ title: newTitle });
+	};
+ 
+
+	const summaryRef = useRef(null);
+	const keyUpListener = (e) => {
+		if (e.keyCode === SPACE ) {
 			e.preventDefault();
 		}
 	};
 
-	// const clickListener = (e) => e.preventDefault();
-	
+	const clickListener = (e) => e.preventDefault();
+	useEffect(() => {
+		if (!summaryRef.current) {
+			return;
+		}
+
+		summaryRef.current.addEventListener('keyup', keyUpListener);
+		summaryRef.current.addEventListener('click', clickListener);
+		return () => {
+			summaryRef.current.removeEventListener('keyup', keyUpListener);
+			summaryRef.current.removeEventListener('click', clickListener);
+		};
+	}, [summaryRef.current]);
 
 	const isInnerBlockSelected = useSelect(
 		(select) =>
@@ -44,13 +64,10 @@ export default function Edit( {
 	);
 
 	const showInnerBlocks =
-		attributes.initialOpen || isSelected || isInnerBlockSelected;
+		attributes.openOnPageLoad || isSelected || isInnerBlockSelected;
+	
 
-	const { title } = attributes;
 
-	const onChangeTitle = (newTitle) => {
-		setAttributes({ title: newTitle });
-	};
 
 	return (
 		<>
@@ -59,30 +76,38 @@ export default function Edit( {
 					<PanelBody>
 						<PanelRow>
 							<PanelHeader>Block Settings</PanelHeader>
-							{/* comment */}
-							
+
 								<CheckboxControl
 									label="Open on page load"
-									checked={attributes.openOnPageLoad}
+									checked={openOnPageLoad}
 									onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
 								></CheckboxControl>
-							
+								
+						</PanelRow>
+						<PanelRow>
+							<PanelHeader>Block Settings -- Toggle</PanelHeader>
+							<ToggleControl
+								label={__('Open by default')}
+								onChange={(openOnPageLoad) =>
+									setAttributes({ openOnPageLoad })
+								}
+								checked={attributes.openOnPageLoad}
+							/>
 						</PanelRow>
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
 
-			<details {...blockProps} className={className} open={showInnerBlocks}>
+			<details {...blockProps} open={showInnerBlocks}>
 				<RichText
 					tagName="summary"
 					value={title}
-					onKeyDown={keyDownListener}
 					onChange={onChangeTitle}
-					
 					placeholder={__(
 						'Enter the summary text...',
 						'accordion-block'
 					)}
+					
 					aria-label={__('Summary text')}
 				/>
 				<InnerBlocks />

@@ -8,23 +8,44 @@
 	"icon": "menu",
 	"description": "Accordion Block for doing stuff",
 	"supports": {
-		"html": false
+		"html": false,
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		},
+		"align": true,
+		"ariaLabel": true
 	},
 	"attributes": {
 			"openOnPageLoad": {
-				"type": "boolean"
+				"type": "boolean",
+				"default": false
 		},
 			"title": {
 				"type": "string"
 		}
 	},
-	"styles": [
-		{
-			"name": "default",
-			"label": "Default",
-			"isDefault": true
-		}
-	],
+"styles": [
+	{
+		"name": "default",
+		"label": "Default",
+		"isDefault": true
+	},
+	{
+		"name": "plus",
+		"label": "Plus"
+	}
+],
 	"example": {
 		"attributes": {
 			"content": "Hello World",
