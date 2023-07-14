@@ -11,13 +11,14 @@ import {
 
 import {
 	Panel,
+	PanelHeader,
 	PanelRow,
 	PanelBody,
 	CheckboxControl
 } from '@wordpress/components';
 // import { SPACE } from '@wordpress/keycodes';
 import './editor.scss';
-export default function DetailsEdit( { 
+export default function Edit( { 
 	attributes, 
 	setAttributes,
 	className,
@@ -25,7 +26,7 @@ export default function DetailsEdit( {
 	isSelected
  } ) {
 	const blockProps = useBlockProps( {
-		className: 'bb-accordion-block',
+		className: 'blackbird-accordion-block',
 	} );
 	const keyDownListener = (e) => {
 		if (e.keyCode === 32) {
@@ -54,18 +55,20 @@ export default function DetailsEdit( {
 	return (
 		<>
 			<InspectorControls key="setting">
-				<Panel>
-					<PanelRow>
-						<PanelBody>
-							<fieldset>
+				<Panel header="Accordion Block">
+					<PanelBody>
+						<PanelRow>
+							<PanelHeader>Block Settings</PanelHeader>
+							{/* comment */}
+							
 								<CheckboxControl
 									label="Open on page load"
 									checked={attributes.openOnPageLoad}
 									onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
 								></CheckboxControl>
-							</fieldset>
-						</PanelBody>
-					</PanelRow>
+							
+						</PanelRow>
+					</PanelBody>
 				</Panel>
 			</InspectorControls>
 
