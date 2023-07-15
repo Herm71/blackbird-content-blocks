@@ -2,10 +2,10 @@
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
-import { 
-	useBlockProps, 
-	InspectorControls, 
-	InnerBlocks, 
+import {
+	useBlockProps,
+	InspectorControls,
+	InnerBlocks,
 	RichText
 } from '@wordpress/block-editor';
 
@@ -20,8 +20,8 @@ import {
 import { useEffect, useRef } from '@wordpress/element';
 import { SPACE } from '@wordpress/keycodes';
 import './editor.scss';
-export default function Edit( { 
-	attributes, 
+export default function Edit( {
+	attributes,
 	clientId,
 	isSelected,
 	setAttributes,
@@ -31,12 +31,14 @@ export default function Edit( {
 	} );
 
 	const { title, openOnPageLoad } = attributes;
+
 	const onChangeTitle = (newTitle) => {
 		setAttributes({ title: newTitle });
 	};
- 
+
 
 	const summaryRef = useRef(null);
+
 	const keyUpListener = (e) => {
 		if (e.keyCode === SPACE ) {
 			e.preventDefault();
@@ -48,7 +50,6 @@ export default function Edit( {
 		if (!summaryRef.current) {
 			return;
 		}
-
 		summaryRef.current.addEventListener('keyup', keyUpListener);
 		summaryRef.current.addEventListener('click', clickListener);
 		return () => {
@@ -65,7 +66,7 @@ export default function Edit( {
 
 	const showInnerBlocks =
 		attributes.openOnPageLoad || isSelected || isInnerBlockSelected;
-	
+
 
 
 
@@ -82,7 +83,7 @@ export default function Edit( {
 									checked={openOnPageLoad}
 									onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
 								></CheckboxControl>
-								
+
 						</PanelRow>
 						<PanelRow>
 							<PanelHeader>Block Settings -- Toggle</PanelHeader>
@@ -107,7 +108,7 @@ export default function Edit( {
 						'Enter the summary text...',
 						'accordion-block'
 					)}
-					
+
 					aria-label={__('Summary text')}
 				/>
 				<InnerBlocks />
