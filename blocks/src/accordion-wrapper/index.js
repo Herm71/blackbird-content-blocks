@@ -1,8 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 
 import './style.scss';
-import './accordionwrapper.js';
-
 
 import Edit from './edit';
 import save from './save';

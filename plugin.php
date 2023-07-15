@@ -16,6 +16,17 @@
  */
 
 /**
+ * Enqueue theme scripts and styles.
+ */
+function blackbird_scripts() {
+
+	wp_register_script( 'accordion-wrapper-script', plugin_dir_url( __FILE__ ) . 'js/accordionwrapper.js', array(), wp_get_theme()->get( 'Version' ), true );
+	wp_enqueue_script( 'accordion-wrapper-script' );
+
+}
+add_action( 'wp_enqueue_scripts', 'blackbird_scripts' );
+
+/**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
  * through the block editor in the corresponding context.
