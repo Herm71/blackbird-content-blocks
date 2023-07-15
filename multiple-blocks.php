@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Multiple blocks plugin
+ * Plugin Name:       Blackbird Multiple blocks plugin
  * Plugin URI:        https://github.com/Herm71/multiple-blocks
- * Description:       Example plugin to demonstrate how to create multiple blocks.
+ * Description:       Template plugin for creating multiple blocks.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -12,7 +12,7 @@
  * Text Domain:       blackbird
  * Domain Path:       multiple-blocks
  *
- * @package           wz-tutorial
+ * @package           bb-blocks
  */
 
 /**
