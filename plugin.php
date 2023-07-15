@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Blackbird Multiple blocks plugin
+ * Plugin Name:       Blackbird multiple blocks plugin
  * Plugin URI:        https://github.com/Herm71/multiple-blocks
  * Description:       Template plugin for creating multiple blocks.
  * Requires at least: 6.1

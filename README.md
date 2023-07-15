@@ -1,4 +1,4 @@
-# Mutiple blocks plugin example v0.1.0
+# Blackbird mutiple blocks plugin v0.1.0
 
 Contributors:      Herm71, webberzone, ajay
 Tags:              block, multiple-blocks
