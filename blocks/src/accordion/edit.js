@@ -100,6 +100,9 @@ export default function Edit( {
 			</InspectorControls>
 
 			<details {...blockProps} open={showInnerBlocks}>
+				<span onKeyUp={event => {
+					event.preventDefault();
+				}}>
 				<RichText
 					tagName="summary"
 					value={title}
@@ -111,6 +114,7 @@ export default function Edit( {
 
 					aria-label={__('Summary text')}
 				/>
+				</span>
 				<InnerBlocks />
 			</details>
 

@@ -15,6 +15,7 @@ export default function Edit() {
 	return (
 		<>
 			<div {...blockProps}>
+			<p>Accordion Wrapper</p>
 				<InnerBlocks />
 			</div>
 		</>
