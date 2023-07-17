@@ -6,11 +6,11 @@ export default function save({ attributes }) {
 	const blockProps = useBlockProps.save({
 	});
 	const innerBlocksProps = useInnerBlocksProps.save();
-	const { title } = attributes;
+	const { title, showInnerBlocks } = attributes;
 
 
 	return (
-		<details {...blockProps} >
+		<details {...blockProps} open={showInnerBlocks}>
 				<RichText.Content
 					tagName="summary"
 					value={title}
