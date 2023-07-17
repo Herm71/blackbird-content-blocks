@@ -13,7 +13,6 @@ export default function save({ attributes }) {
 		<details {...blockProps} open={showInnerBlocks}>
 				<summary>
 					<RichText.Content
-
 						value={title}
 					/>
 				</summary>

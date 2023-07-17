@@ -104,17 +104,15 @@ export default function Edit( {
 
 			<details {...blockProps} open={showInnerBlocks}>
 				<summary onKeyUp={keyUpListener} onClick={clickListener}>
-				<RichText
-
-					value={title}
-					onChange={onChangeTitle}
-					placeholder={__(
-						'Enter the summary text...',
-						'accordion-block'
-					)}
-
-					aria-label={__('Summary text')}
-				/>
+					<RichText
+						value={title}
+						onChange={onChangeTitle}
+						placeholder={__(
+							'Enter the summary text...',
+							'accordion-block'
+						)}
+						aria-label={__('Summary text')}
+					/>
 				</summary>
 				<InnerBlocks />
 			</details>
