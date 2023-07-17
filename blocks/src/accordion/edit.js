@@ -36,6 +36,11 @@ export default function Edit( {
 		setAttributes({ title: newTitle });
 	};
 
+	const prevDef = (e) => {
+		e => {
+			e.preventDefault();
+		}
+	}
 
 	const summaryRef = useRef(null);
 
@@ -100,9 +105,7 @@ export default function Edit( {
 			</InspectorControls>
 
 			<details {...blockProps} open={showInnerBlocks}>
-				<span onKeyUp={event => {
-					event.preventDefault();
-				}}>
+				<span onKeyUp={prevDef}>
 				<RichText
 					tagName="summary"
 					value={title}
