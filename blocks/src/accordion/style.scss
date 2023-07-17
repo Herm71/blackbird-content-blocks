@@ -29,6 +29,11 @@
 			height: 1.5em;
 			transition: transform 0.1s linear;
 		}
+		input {
+			width: 100%;
+			color: inherit;
+			font-size: inherit;
+		}
 	}
 
 }

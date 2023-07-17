@@ -1,6 +1,6 @@
 
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, useInnerBlocksProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
 	const blockProps = useBlockProps.save({
@@ -11,11 +11,16 @@ export default function save({ attributes }) {
 
 	return (
 		<details {...blockProps} >
-				<RichText.Content
-					tagName="summary"
+			<summary>
+				<input
+
 					value={title}
+					style={{ "width": "100%" }}
+					aria-label={__('Summary text')}
+
 				/>
-			<div {...innerBlocksProps} />
+		</summary>
+		<div {...innerBlocksProps} />
 		</details>
 	);
 }

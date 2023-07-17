@@ -100,17 +100,20 @@ export default function Edit( {
 			</InspectorControls>
 
 			<details {...blockProps} open={showInnerBlocks}>
-				<RichText
-					tagName="summary"
-					value={title}
-					onChange={onChangeTitle}
-					placeholder={__(
-						'Enter the summary text...',
-						'accordion-block'
-					)}
-
-					aria-label={__('Summary text')}
-				/>
+				<summary>
+					<input
+						placeholder={__(
+							'Enter the summary text...',
+							'accordion-block'
+						)}
+						value={title}
+						onKeyUp={event => {
+							event.preventDefault();
+						}}
+						onChange={e => setAttributes({ title: e.target.value })}
+						aria-label={__('Summary text')}
+					/>
+				</summary>
 				<InnerBlocks />
 			</details>
 
