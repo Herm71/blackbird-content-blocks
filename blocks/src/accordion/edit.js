@@ -36,12 +36,6 @@ export default function Edit( {
 		setAttributes({ title: newTitle });
 	};
 
-	const prevDef = (e) => {
-		e => {
-			e.preventDefault();
-		}
-	}
-
 	const summaryRef = useRef(null);
 
 	const keyUpListener = (e) => {
@@ -84,9 +78,13 @@ export default function Edit( {
 							<PanelHeader>Block Settings</PanelHeader>
 
 								<CheckboxControl
-									label="Open on page load"
+								label={__('Open by default')}
 									checked={openOnPageLoad}
-									onChange={newValue => setAttributes({ openOnPageLoad: newValue })}
+									onChange={() =>
+										setAttributes({
+											openOnPageLoad: ! openOnPageLoad,
+										})
+									}
 								></CheckboxControl>
 
 						</PanelRow>
@@ -105,9 +103,9 @@ export default function Edit( {
 			</InspectorControls>
 
 			<details {...blockProps} open={showInnerBlocks}>
-				<span onKeyUp={prevDef}>
+				<summary onKeyUp={keyUpListener} onClick={clickListener}>
 				<RichText
-					tagName="summary"
+
 					value={title}
 					onChange={onChangeTitle}
 					placeholder={__(
@@ -117,7 +115,7 @@ export default function Edit( {
 
 					aria-label={__('Summary text')}
 				/>
-				</span>
+				</summary>
 				<InnerBlocks />
 			</details>
 

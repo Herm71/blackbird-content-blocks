@@ -11,10 +11,12 @@ export default function save({ attributes }) {
 
 	return (
 		<details {...blockProps} open={showInnerBlocks}>
-				<RichText.Content
-					tagName="summary"
-					value={title}
-				/>
+				<summary>
+					<RichText.Content
+
+						value={title}
+					/>
+				</summary>
 			<div {...innerBlocksProps} />
 		</details>
 	);
