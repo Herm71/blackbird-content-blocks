@@ -11,12 +11,12 @@ export default function Edit() {
 	const blockProps = useBlockProps( {
 		className: 'accordion-wrapper',
 	} );
-
+	const ALLOWED_BLOCKS = [ 'blackbird/accordion' ]
 	return (
 		<>
 			<div {...blockProps}>
 			<p>Accordion Wrapper</p>
-				<InnerBlocks />
+				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 			</div>
 		</>
 	);
