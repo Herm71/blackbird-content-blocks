@@ -5,11 +5,55 @@
 	"version": "0.1.0",
 	"title": "Details",
 	"category": "text",
-	"icon": "smiley",
-	"description": "Details block",
+	"icon": "text",
+	"description": "Hide and show additional content.",
 	"supports": {
-		"html": false
+		"align": [
+			"wide",
+			"full"
+		],
+		"typography": {
+			"fontSize": true
+		},
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		},
+		"ariaLabel": true
 	},
+	"attributes": {
+		"showContent": {
+			"type": "boolean",
+			"default": false
+		},
+		"summary": {
+			"type": "string"
+		}
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{
+			"name": "chevron",
+			"label": "Chevron"
+		},
+		{
+			"name": "plus",
+			"label": "Plus/Minus"
+		},
+		{
+			"name": "check",
+			"label": "Check mark"
+		}
+	],
 	"textdomain": "details",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

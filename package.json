@@ -1,32 +1,35 @@
 {
-	"name": "multiple-blocks",
+	"name": "blackbird-content-blocks",
 	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "webberzone, ajay",
+	"description": "Additional WordPress content blocks",
+	"author": "Herm71",
 	"license": "GPL-2.0-or-later",
-	"homepage": "https://webberzone.com/",
+	"homepage": "https://github.com/Herm71",
 	"main": "blocks/build/index.js",
 	"scripts": {
 		"start": "wp-scripts start --webpack-src-dir=blocks/src/ --output-path=blocks/build/",
 		"build": "wp-scripts build --webpack-src-dir=blocks/src/ --output-path=blocks/build/",
-		"start:static": "wp-scripts start --webpack-src-dir=blocks/src/static --output-path=blocks/build/static",
-		"build:static": "wp-scripts build --webpack-src-dir=blocks/src/static --output-path=blocks/build/static",
-		"start:dynamic": "wp-scripts start --webpack-src-dir=blocks/src/dynamic --output-path=blocks/build/dynamic",
-		"build:dynamic": "wp-scripts build --webpack-src-dir=blocks/src/dynamic --output-path=blocks/build/dynamic",
-		"start:accordion": "wp-scripts start --webpack-src-dir=blocks/src/accordion --output-path=blocks/build/accordion",
-		"build:accordion": "wp-scripts build --webpack-src-dir=blocks/src/accordion --output-path=blocks/build/accordion",
-		"start:accordion-wrapper": "wp-scripts start --webpack-src-dir=blocks/src/accordion-wrapper --output-path=blocks/build/accordion-wrapper",
-		"build:accordion-wrapper": "wp-scripts build --webpack-src-dir=blocks/src/accordion-wrapper --output-path=blocks/build/accordion-wrapper",
+		"start:details": "wp-scripts start --webpack-src-dir=blocks/src/details --output-path=blocks/build/details",
+		"build:details": "wp-scripts build --webpack-src-dir=blocks/src/details --output-path=blocks/build/details",
+		"start:details-wrapper": "wp-scripts start --webpack-src-dir=blocks/src/details-wrapper --output-path=blocks/build/details-wrapper",
+		"build:details-wrapper": "wp-scripts build --webpack-src-dir=blocks/src/details-wrapper --output-path=blocks/build/details-wrapper",
 		"format": "wp-scripts format",
+		"format:src": "wp-scripts format ./blocks/src",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
+		"lint:js:src": "wp-scripts lint-js ./blocks/src",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip"
+		"plugin-zip": "wp-scripts plugin-zip",
+		"release": "standard-version"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.2.0"
+		"@wordpress/scripts": "^26.2.0",
+		"standard-version": "^9.5.0"
 	},
-	"dependencies": {
-		"classnames": "^2.3.2"
-	}
+	"files": [
+		"ucsc-content-blocks.php",
+		"blocks/build",
+		"js"
+	]
 }

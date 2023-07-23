@@ -5,5 +5,25 @@
  */
 
 .wp-block-blackbird-details {
-	border: 1px dotted #f00;
+  border: 1px solid #aaa;
+  border: 1px solid var(--wp--preset--color--light-gray);
+  border-radius: 4px;
+  margin: 0.5em 0.5em 0;
+  padding: 0.5em 0.5em 0;
 }
+
+.wp-block-blackbird-details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+
+details.wp-block-blackbird-details[class*="-font-size"] {
+
+  summary {
+
+    &::before {
+      margin-top: -1.05em !important;
+    }
+  }
+}
+
