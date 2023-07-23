@@ -4,15 +4,15 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 import './editor.scss';
 export default function Edit() {
-	const blockProps = useBlockProps({
+	const blockProps = useBlockProps( {
 		className: 'details-wrapper',
-	});
-	const ALLOWED_BLOCKS = ['blackbird/details'];
+	} );
+	const ALLOWED_BLOCKS = [ 'blackbird/details' ];
 	return (
 		<>
-			<div {...blockProps}>
+			<div { ...blockProps }>
 				<p class="wrapper-heading">Details wrapper</p>
-				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		</>
 	);
