@@ -28,7 +28,7 @@
 		"standard-version": "^9.5.0"
 	},
 	"files": [
-		"ucsc-content-blocks.php",
+		"blackbird-content-blocks.php",
 		"blocks/build",
 		"js"
 	]
