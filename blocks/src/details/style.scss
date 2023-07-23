@@ -4,9 +4,176 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-
 .wp-block-blackbird-details {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+		box-sizing: border-box;
+		overflow: hidden;
+}
+
+.wp-block-blackbird-details summary {
+
+  cursor: pointer;
+}
+
+.wp-block-blackbird-details summary > * {
+  display: inline;
+}
+
+
+/* Use block gap for block; falls back to browser default if not supported. */
+.wp-block-blackbird-details > *:not(summary) {
+	margin-block-start: var(--wp--style--block-gap);
+	margin-block-end: 0;
+}
+
+/* Remove excess margin from the last block. */
+.wp-block-blackbird-details > *:last-child {
+	margin-bottom: 0;
+}
+
+/* Add Dashicons to non-default styles */
+details.wp-block-blackbird-details[class*="is-style-"]:not([class*="is-style-default"]) {
+
+	summary {
+		list-style: none;
+		position: relative;
+		padding-left: 1.5rem;
+		&::-webkit-details-marker {
+			display:none;
+		}
+		&::before {
+			color: currentColor;
+			font-family: dashicons;
+			position: absolute;
+  		top: 1.3em;
+  		left: 0.1em;
+  		margin-top: -1.3em;
+
+		}
+	}
+}
+
+/* Styles for marker and Dashicon variations */
+.wp-block-blackbird-details {
+
+	&.is-style-default {
+		summary::marker {
+			position:absolute
+		}
+	}
+	&.is-style-chevron {
+		summary::before{
+			content: "\f345";
+		}
+	}
+	&.is-style-plus {
+		summary::before{
+			content: "\f543";
+		}
+	}
+	&.is-style-check {
+		summary::before{
+			content: "\f147";
+		}
+	}
+	&.has-small-font-size {
+		summary{
+			padding-left: 1rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--small);
+			}
+		}
+	}
+	&.has-base-font-size {
+		summary{
+			padding-left: 1.25rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--base);
+			}
+		}
+	}
+	&.has-one-font-size {
+		summary{
+			padding-left: 1.5rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--one);
+			}
+		}
+	}
+	&.has-two-font-size {
+		summary{
+			padding-left: 1.75rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--two);
+			}
+		}
+	}
+	&.has-three-font-size {
+		summary{
+			padding-left: 2rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--three);
+			}
+		}
+	}
+	&.has-four-font-size {
+		summary{
+			padding-left: 2.25rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--four);
+			}
+		}
+	}
+	&.has-five-font-size {
+		summary{
+			padding-left: 2.75rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--five);
+			}
+		}
+	}
+	&.has-six-font-size {
+		summary{
+			padding-left: 3.25rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--six);
+			}
+		}
+	}
+	&.has-seven-font-size {
+		summary{
+			padding-left: 4rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--seven);
+			}
+		}
+	}
+	&.has-eight-font-size {
+		summary{
+			padding-left: 5.5rem!important;
+			&::before{
+				font-size: var(--wp--preset--font-size--eight);
+			}
+		}
+	}
+
+}
+/* Styles for marker and Dashicon variations [open]*/
+.wp-block-blackbird-details[open] {
+
+	&.is-style-chevron {
+		summary::before{
+			content: "\f347";
+		}
+	}
+	&.is-style-plus {
+		summary::before{
+			content: "\f460";
+		}
+	}
+	&.is-style-check {
+		summary::before{
+			content: "\f335";
+		}
+	}
+
 }

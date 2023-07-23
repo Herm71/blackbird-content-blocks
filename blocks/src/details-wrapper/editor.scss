@@ -4,26 +4,17 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-blackbird-details {
+.wp-block-blackbird-details-wrapper {
   border: 1px solid #aaa;
   border: 1px solid var(--wp--preset--color--light-gray);
   border-radius: 4px;
   margin: 0.5em 0.5em 0;
   padding: 0.5em 0.5em 0;
-}
-
-.wp-block-blackbird-details[open] summary {
-  border-bottom: 1px solid #aaa;
-  margin-bottom: 0.5em;
-}
-
-details.wp-block-blackbird-details[class*="-font-size"] {
-
-  summary {
-
-    &::before {
-      margin-top: -1.05em !important;
-    }
+  .wrapper-heading {
+    color: #aaa;
+    color: var(--wp--preset--color--light-gray);
+    font-size: 20px;
+    font-size: var(--wp--preset--font-size--medium);
+    margin-top: 0;
   }
 }
-

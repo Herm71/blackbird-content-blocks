@@ -1,6 +1,6 @@
 {
-    "name": "jason/blackbird-multiple-blocks",
-    "description": "Composer for Blackbird Multiple Blocks",
+	"name": "blackbird/content-blocks",
+	"description": "Composer for Blackbird Content Blocks",
     "type": "project",
     "require-dev": {
         "wp-coding-standards/wpcs": "^2.3",

@@ -1,38 +1,79 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
+import {
+	RichText,
+	useBlockProps,
+	useInnerBlocksProps,
+	store as blockEditorStore,
+	InspectorControls,
+} from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+import { SPACE } from '@wordpress/keycodes';
 import './editor.scss';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
- */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes, clientId } ) {
+	const { summary, showContent } = attributes;
+	const blockProps = useBlockProps( {
+		className: [ 'details-block' ],
+	} );
+	const innerBlocksProps = useInnerBlocksProps( blockProps );
+	// console.log(blockProps);
+	const onChangeSummary = ( newSummary ) => {
+		setAttributes( { summary: newSummary } );
+	};
+	const keyUpListener = ( e ) => {
+		if ( e.keyCode === SPACE ) {
+			e.preventDefault();
+		}
+	};
+	// Check if either the block or the inner blocks are selected.
+	const hasSelection = useSelect(
+		( select ) => {
+			const { isBlockSelected, hasSelectedInnerBlock } =
+				select( blockEditorStore );
+			/* Sets deep to true to also find blocks inside the details content block. */
+			return (
+				hasSelectedInnerBlock( clientId, true ) ||
+				isBlockSelected( clientId )
+			);
+		},
+		[ clientId ]
+	);
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Details – hello from the editor!', 'details' ) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'Settings' ) }>
+					<ToggleControl
+						label={ __( 'Open by default' ) }
+						checked={ showContent }
+						onChange={ () =>
+							setAttributes( {
+								showContent: ! showContent,
+							} )
+						}
+					/>
+				</PanelBody>
+			</InspectorControls>
+
+			<details
+				{ ...innerBlocksProps }
+				open={ hasSelection || showContent }
+			>
+				<summary class="dashicons-before" onKeyUp={ keyUpListener }>
+					<RichText
+						value={ summary }
+						onChange={ onChangeSummary }
+						placeholder={ __(
+							'Enter the summary text...',
+							'details'
+						) }
+						aria-label={ __( 'Summary text' ) }
+						multiline={ false }
+					/>
+				</summary>
+				{ innerBlocksProps.children }
+			</details>
+		</>
 	);
 }
