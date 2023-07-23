@@ -6,9 +6,16 @@
 	"title": "Details wrapper",
 	"category": "text",
 	"icon": "button",
-	"description": "Wrapper for details block",
+	"description": "Wrapper for the details block",
 	"supports": {
-		"html": false
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"text": false,
+			"background": true
+		}
 	},
 	"textdomain": "details-wrapper",
 	"editorScript": "file:./index.js",
